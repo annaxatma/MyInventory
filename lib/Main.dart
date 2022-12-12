@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-
       initialRoute: '/',
       routes: {
         // '/': (context) => Home(),
