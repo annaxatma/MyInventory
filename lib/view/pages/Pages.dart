@@ -5,3 +5,4 @@ part 'Home.dart';
 part 'Profile.dart';
 part 'Login.dart';
 part 'Register.dart';
+part 'SplashScreen.dart';

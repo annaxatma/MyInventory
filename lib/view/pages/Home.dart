@@ -3,6 +3,8 @@ part of 'Pages.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
+  static const String routeName = "/Home";
+
   @override
   State<Home> createState() => _HomeState();
 }
