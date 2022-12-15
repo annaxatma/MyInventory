@@ -16,12 +16,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
       initialRoute: Login.routeName,
+
+      // Page routes
       routes: {
         Home.routeName: (context) => const Home(),
         Profile.routeName: (context) => const Profile(),
         Login.routeName: (context) => const Login(),
         Register.routeName: (context) => const Register(),
-        AddItem.routeName:(context) => const AddItem()
+        AddItem.routeName:(context) => const AddItem(),
+        ItemDetails.routeName:(context) => const ItemDetails(),
+        EditItem.routeName:(context) => const EditItem(),
       },
     );
   }

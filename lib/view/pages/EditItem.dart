@@ -1,15 +1,15 @@
 part of "Pages.dart";
 
-class AddItem extends StatefulWidget {
-  const AddItem({Key? key}) : super(key: key);
+class EditItem extends StatefulWidget {
+  const EditItem({ Key? key }) : super(key: key);
 
-  static const String routeName = "/AddItem";
+  static const String routeName = "/EditItem";
 
   @override
-  _AddItemState createState() => _AddItemState();
+  _EditItemState createState() => _EditItemState();
 }
 
-class _AddItemState extends State<AddItem> {
+class _EditItemState extends State<EditItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +38,11 @@ class _AddItemState extends State<AddItem> {
                   height: 32,
                 ),
 
-                // This is the add item text.
+                // This is the edit item text.
                 Container(
                   width: double.infinity,
                   child: const Text(
-                    "Add Item",
+                    "Edit Item",
                     style: TextStyle(
                         color: Color.fromARGB(255, 40, 107, 53),
                         fontWeight: FontWeight.w900,
@@ -61,6 +61,8 @@ class _AddItemState extends State<AddItem> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     labelText: "Item Name",
+                    hintText: "Nails",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.input),
                   ),
                 ),
@@ -75,6 +77,8 @@ class _AddItemState extends State<AddItem> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     labelText: "Quantity",
+                    hintText: "342567",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.production_quantity_limits),
                   ),
                 ),
@@ -89,6 +93,8 @@ class _AddItemState extends State<AddItem> {
                   keyboardType: TextInputType.visiblePassword,
                   decoration: const InputDecoration(
                     labelText: "Item Description",
+                    hintText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.question_mark),
                   ),
                 ),
@@ -97,7 +103,7 @@ class _AddItemState extends State<AddItem> {
                   height: 32,
                 ),
 
-                // This is the add item button.
+                // This is the save button.
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
@@ -105,7 +111,7 @@ class _AddItemState extends State<AddItem> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      'ADD ITEM',
+                      'SAVE',
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
