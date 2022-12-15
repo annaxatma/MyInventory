@@ -3,6 +3,8 @@ part of 'Pages.dart';
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
+  static const String routeName = "/Login";
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -18,11 +20,10 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                
                 // This is the login text.
                 Container(
                   width: double.infinity,
-                  child: Text(
+                  child: const Text(
                     "Login",
                     style: TextStyle(
                         color: Color.fromARGB(255, 40, 107, 53),
@@ -31,12 +32,14 @@ class _LoginState extends State<Login> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
+
+                // This is the text under the login text.
                 Container(
                   width: double.infinity,
-                  child: Text(
+                  child: const Text(
                     "Please sign in to continue",
                     style: TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145),
@@ -44,9 +47,11 @@ class _LoginState extends State<Login> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
+
+                // This is the email input.
                 TextFormField(
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
@@ -59,8 +64,9 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 16,
                 ),
+
+                // This is the password input.
                 TextFormField(
-                  // Note: Pass input
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.visiblePassword,
@@ -72,18 +78,23 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 32,
                 ),
+
+                // This is the login button.
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
+                      Navigator.pushReplacementNamed(
                         context,
-                        MaterialPageRoute(builder: (context) => const Home()),
+                        Home.routeName
                       );
                     },
-                    child: Text('LOGIN'),
+                    child: const Text(
+                      'LOGIN',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 40, 107, 53),
+                      backgroundColor: const Color.fromARGB(255, 40, 107, 53),
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(50),
                       ),
@@ -93,26 +104,32 @@ class _LoginState extends State<Login> {
               ],
             ),
           ),
+
+          // This is the bottom text.
           Align(
             alignment: const Alignment(0, 0.9),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Register()),
-                      );
+                Navigator.pushNamed(
+                  context,
+                  Register.routeName
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have an account?",
                     style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
                   ),
-                  SizedBox(width: 8,),
-                  Text(
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
                     "Sign Up",
-                    style: TextStyle(color: Color.fromARGB(255, 40, 107, 53), fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 40, 107, 53),
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

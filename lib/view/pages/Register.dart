@@ -3,6 +3,8 @@ part of "Pages.dart";
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
+  static const String routeName = "/Register";
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -20,23 +22,26 @@ class _RegisterState extends State<Register> {
               children: [
                 Container(
                   alignment: Alignment.centerLeft,
+
+                  // This is the custom back button.
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pop();
+                      Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       color: Color.fromARGB(255, 145, 145, 145),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
-                // This is the login text.
+
+                // This is the create account text.
                 Container(
                   width: double.infinity,
-                  child: Text(
+                  child: const Text(
                     "Create Account",
                     style: TextStyle(
                         color: Color.fromARGB(255, 40, 107, 53),
@@ -45,10 +50,11 @@ class _RegisterState extends State<Register> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
+
+                // This is the name input.
                 TextFormField(
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
@@ -61,6 +67,8 @@ class _RegisterState extends State<Register> {
                 const SizedBox(
                   height: 16,
                 ),
+
+                // This is the email input.
                 TextFormField(
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
@@ -73,8 +81,9 @@ class _RegisterState extends State<Register> {
                 const SizedBox(
                   height: 16,
                 ),
+
+                // This is the password input.
                 TextFormField(
-                  // Note: Pass input
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.visiblePassword,
@@ -87,8 +96,8 @@ class _RegisterState extends State<Register> {
                   height: 16,
                 ),
 
+                // This is the confirm password input.
                 TextFormField(
-                  // Note: Pass input
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.visiblePassword,
@@ -100,16 +109,15 @@ class _RegisterState extends State<Register> {
                 const SizedBox(
                   height: 32,
                 ),
+
+                // This is the sign up button.
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Login()),
-                      );
+                      Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
                     },
-                    child: Text('SIGN UP'),
+                    child: Text('SIGN UP', style: TextStyle(color: Colors.white),),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 40, 107, 53),
                       shape: new RoundedRectangleBorder(
@@ -121,26 +129,25 @@ class _RegisterState extends State<Register> {
               ],
             ),
           ),
+
+          // This is the bottom text.
           Align(
             alignment: const Alignment(0, 0.9),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Login()),
-                );
+                Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have an account?",
                     style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
-                  Text(
+                  const Text(
                     "Sign In",
                     style: TextStyle(
                         color: Color.fromARGB(255, 40, 107, 53),

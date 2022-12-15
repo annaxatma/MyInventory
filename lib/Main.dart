@@ -14,20 +14,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // Removing the "debug" text.
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      theme: ThemeData(primarySwatch: Colors.grey),
+      initialRoute: Login.routeName,
       routes: {
-        // '/': (context) => Home(),
-        // Login.routeName: (context) => Login(),
-
-        '/': (context) => const Login(),
         Home.routeName: (context) => const Home(),
         Profile.routeName: (context) => const Profile(),
-        //Register.routeName: (context) => const Register(),
+        Login.routeName: (context) => const Login(),
+        Register.routeName: (context) => const Register(),
+        AddItem.routeName:(context) => const AddItem()
       },
     );
   }
 }
-
-
-
-
