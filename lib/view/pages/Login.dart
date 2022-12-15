@@ -3,165 +3,140 @@ part of 'Pages.dart';
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
-  // static const String routeName = "/Login";
+  static const String routeName = "/Login";
 
   @override
-  State<Login> createState() => _LoginState();
+  _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            body: Column(
-              // Note: 1st layer to contain almost everything u see :)
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 180,
+                // This is the login text.
+                Container(
+                  width: double.infinity,
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 40, 107, 53),
+                        fontWeight: FontWeight.w900,
+                        fontSize: 42),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
-                Flexible(flex: 1, child: Row(
-                  // Note: I know it's a lot but trust me, it's just for the "sign in" text :v
-                  children: [
-                    Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 30),
-                          child: Text.rich(
-                            TextSpan(
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.transparent, letterSpacing: 4),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: 'Si',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      decorationColor: Color.fromARGB(
-                                          255, 58, 177, 73),
-                                      decorationThickness: 3,
-                                      shadows: [Shadow(color: Color.fromARGB(
-                                          255, 38, 107, 53), offset: Offset(0, -10))],
-                                    )
-                                ),
-                                TextSpan(
-                                    text: 'gn',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      shadows: [Shadow(color: Color.fromARGB(
-                                          255, 38, 107, 53), offset: Offset(0, -10))],
-                                    )
-                                ),
-                                TextSpan(
-                                    text: ' In',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      shadows: [Shadow(color: Color.fromARGB(
-                                          255, 38, 107, 53), offset: Offset(0, -10))],
-                                    )
-                                )
-                              ],
-                            ),
-                          )
-                        )
-                    ),
-                    // Note: This is for the "sign up" button
-                    Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          child: TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, Register.routeName);
-                              },
-                              child: Text.rich(
-                                TextSpan(
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.transparent, letterSpacing: 4),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                        text: 'Sign',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          shadows: [Shadow(color: Color.fromARGB(
-                                              255, 124, 150, 109), offset: Offset(0, -10))],
-                                        )
-                                    ),
-                                    TextSpan(
-                                        text: ' Up',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          shadows: [Shadow(color: Color.fromARGB(
-                                              255, 124, 150, 109), offset: Offset(0, -10))],
-                                        )
-                                    )
-                                    // can add more TextSpans here...
-                                  ],
-                                ),
-                              )
-                          ),
-                        )
-                    ),
-                  ],
-                )),
-                // Note: This is for username-password + button form
-                Flexible(
-                    child: Form(
-                      child: ListView(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          // Note: Email input
-                          TextFormField(
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 20, 37, 21),
-                                fontSize: 14
-                            ),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                labelText: "Email",
-                                prefixIcon: Icon(Icons.email),
-                            ),
+                const SizedBox(
+                  height: 8,
+                ),
 
-                          ),
-                          // Note: just for space between emain dn pass
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            // Note: Pass input
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 20, 37, 21),
-                                fontSize: 14
-                            ),
-                            keyboardType: TextInputType.visiblePassword,
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              prefixIcon: Icon(Icons.key),
-                            ),
-                          ),
-                          // Note: just for space between emain dn pass
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Align(
-                            // Note: login button
-                            alignment: Alignment.centerRight,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, Home.routeName);
-                              },
-                              child: Text('Login'),
-                              style: ElevatedButton.styleFrom(
-                                shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(10.0),
-                                ),
-                              ),
-                            )
-                          )
-                        ],
+                // This is the text under the login text.
+                Container(
+                  width: double.infinity,
+                  child: const Text(
+                    "Please sign in to continue",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 145, 145, 145),
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+
+                // This is the email input.
+                TextFormField(
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    labelText: "Email",
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+
+                // This is the password input.
+                TextFormField(
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: const InputDecoration(
+                    labelText: "Password",
+                    prefixIcon: Icon(Icons.key),
+                  ),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+
+                // This is the login button.
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        Home.routeName
+                      );
+                    },
+                    child: const Text(
+                      'LOGIN',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 40, 107, 53),
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(50),
                       ),
-                    )
-                )
+                    ),
+                  ),
+                ),
               ],
-            )
-        )
+            ),
+          ),
+
+          // This is the bottom text.
+          Align(
+            alignment: const Alignment(0, 0.9),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  Register.routeName
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 40, 107, 53),
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

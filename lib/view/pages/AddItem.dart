@@ -1,15 +1,15 @@
 part of "Pages.dart";
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class AddItem extends StatefulWidget {
+  const AddItem({Key? key}) : super(key: key);
 
-  static const String routeName = "/Register";
+  static const String routeName = "/AddItem";
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _AddItemState createState() => _AddItemState();
 }
 
-class _RegisterState extends State<Register> {
+class _AddItemState extends State<AddItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _RegisterState extends State<Register> {
                   // This is the custom back button.
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
+                      Navigator.pop(context);
                     },
                     child: const Icon(
                       Icons.arrow_back,
@@ -38,11 +38,11 @@ class _RegisterState extends State<Register> {
                   height: 32,
                 ),
 
-                // This is the create account text.
+                // This is the add item text.
                 Container(
                   width: double.infinity,
                   child: const Text(
-                    "Create Account",
+                    "Add Item",
                     style: TextStyle(
                         color: Color.fromARGB(255, 40, 107, 53),
                         fontWeight: FontWeight.w900,
@@ -54,70 +54,60 @@ class _RegisterState extends State<Register> {
                   height: 32,
                 ),
 
-                // This is the name input.
+                // This is the item name input.
                 TextFormField(
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
-                    labelText: "Name",
-                    prefixIcon: Icon(Icons.person),
+                    labelText: "Item Name",
+                    prefixIcon: Icon(Icons.input),
                   ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
 
-                // This is the email input.
+                // This is the quantity input.
                 TextFormField(
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
-                    labelText: "Email",
-                    prefixIcon: Icon(Icons.email),
+                    labelText: "Quantity",
+                    prefixIcon: Icon(Icons.production_quantity_limits),
                   ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
 
-                // This is the password input.
+                // This is the item description input.
                 TextFormField(
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.visiblePassword,
                   decoration: const InputDecoration(
-                    labelText: "Password",
-                    prefixIcon: Icon(Icons.key),
+                    labelText: "Item Description",
+                    prefixIcon: Icon(Icons.question_mark),
                   ),
-                ),
-                const SizedBox(
-                  height: 16,
                 ),
 
-                // This is the confirm password input.
-                TextFormField(
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: const InputDecoration(
-                    labelText: "Confirm Password",
-                    prefixIcon: Icon(Icons.key),
-                  ),
-                ),
                 const SizedBox(
                   height: 32,
                 ),
 
-                // This is the sign up button.
+                // This is the add item button.
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
+                      Navigator.pop(context);
                     },
-                    child: Text('SIGN UP', style: TextStyle(color: Colors.white),),
+                    child: Text(
+                      'ADD ITEM',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 40, 107, 53),
                       shape: new RoundedRectangleBorder(
@@ -129,34 +119,6 @@ class _RegisterState extends State<Register> {
               ],
             ),
           ),
-
-          // This is the bottom text.
-          Align(
-            alignment: const Alignment(0, 0.9),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  const Text(
-                    "Sign In",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 40, 107, 53),
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );

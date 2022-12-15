@@ -12,65 +12,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Removing the "debug" text.
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
-      initialRoute: '/',
+      theme: ThemeData(primarySwatch: Colors.grey),
+      initialRoute: Login.routeName,
+
+      // Page routes
       routes: {
-        // '/': (context) => Home(),
-        '/': (context) => Login(),
-        Home.routeName: (context) => Home(),
-        Profile.routeName: (context) => Profile(),
-        // Login.routeName: (context) => Login(),
-        Register.routeName: (context) => Register(),
+        Home.routeName: (context) => const Home(),
+        Profile.routeName: (context) => const Profile(),
+        Login.routeName: (context) => const Login(),
+        Register.routeName: (context) => const Register(),
+        AddItem.routeName:(context) => const AddItem(),
+        ItemDetails.routeName:(context) => const ItemDetails(),
+        EditItem.routeName:(context) => const EditItem(),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
