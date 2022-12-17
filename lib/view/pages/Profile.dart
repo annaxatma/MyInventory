@@ -38,18 +38,24 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Text(
                     "Hello,",
-                    style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 145, 145, 145)),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 145, 145, 145)),
                   ),
                   Text(
                     "Anna",
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900, color:Color.fromARGB(255, 40, 107, 53) ),
+                    style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        color: Color.fromARGB(255, 40, 107, 53)),
                   ),
                   SizedBox(
                     height: 64,
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, Login.routeName, (route) => false);
                     },
                     child: Text(
                       'SIGN OUT',

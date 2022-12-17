@@ -112,6 +112,7 @@ class _HomeState extends State<Home> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
+<<<<<<< Updated upstream
                                   Container(
                                     padding: const EdgeInsets.all(16),
                                     width: double.infinity,
@@ -123,6 +124,57 @@ class _HomeState extends State<Home> {
                                             color: Colors.grey.withOpacity(0.3),
                                             spreadRadius: 3,
                                             blurRadius: 3,
+=======
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, ItemDetails.routeName);
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(16),
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.3),
+                                              spreadRadius: 3,
+                                              blurRadius: 3,
+                                            ),
+                                          ]),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                "Nails",
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Color.fromARGB(
+                                                        255, 40, 107, 53)),
+                                              ),
+                                              const SizedBox(
+                                                height: 4,
+                                              ),
+                                              const Text(
+                                                "Item ID: 0001",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color.fromARGB(
+                                                        255, 145, 145, 145)),
+                                              )
+                                            ],
+>>>>>>> Stashed changes
                                           ),
                                         ]),
                                     child: Row(

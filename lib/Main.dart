@@ -21,7 +21,13 @@ class MyApp extends StatelessWidget {
         Profile.routeName: (context) => const Profile(),
         Login.routeName: (context) => const Login(),
         Register.routeName: (context) => const Register(),
+<<<<<<< Updated upstream
         AddItem.routeName:(context) => const AddItem()
+=======
+        AddItem.routeName: (context) => const AddItem(),
+        ItemDetails.routeName: (context) => const ItemDetails(),
+        EditItem.routeName: (context) => const EditItem(),
+>>>>>>> Stashed changes
       },
     );
   }

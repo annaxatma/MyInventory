@@ -84,10 +84,7 @@ class _LoginState extends State<Login> {
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        Home.routeName
-                      );
+                      Navigator.pushReplacementNamed(context, Home.routeName);
                     },
                     child: const Text(
                       'LOGIN',
@@ -110,10 +107,7 @@ class _LoginState extends State<Login> {
             alignment: const Alignment(0, 0.9),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  Register.routeName
-                );
+                Navigator.pushNamed(context, Register.routeName);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
