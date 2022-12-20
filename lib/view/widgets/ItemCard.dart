@@ -34,8 +34,19 @@ class _ItemCardState extends State<ItemCard> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(a.itemName.toString()),
-                          Text(a.itemId.toString())
+                          Text(
+                            a.itemName.toString(),
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 40, 107, 53)),
+                          ),
+                          Text(
+                            "Item ID : ${(a.itemId)}",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(255, 145, 145, 145)),
+                          )
                         ],
                       ),
                     ),
@@ -45,7 +56,12 @@ class _ItemCardState extends State<ItemCard> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Quantity : ${(a.itemQuantity)}"),
+                          Text(
+                            "Quantity : ${(a.itemQuantity)}",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Color.fromARGB(255, 145, 145, 145)),
+                          ),
                         ],
                       ))
                 ]))
