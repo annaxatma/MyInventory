@@ -3,7 +3,7 @@ part of "Pages.dart";
 class ItemDetails extends StatefulWidget {
   const ItemDetails({Key? key}) : super(key: key);
 
-  static const String routeName = "/ItemDetails";
+  static const String routeName = "/Details";
 
   @override
   _ItemDetailsState createState() => _ItemDetailsState();

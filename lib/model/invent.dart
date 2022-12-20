@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'item.dart';
+import 'itemdata.dart';
 
 class Invent extends Equatable {
   final bool? status;
