@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
 
       // Page routes
       routes: {
-        Profile.routeName: (context) => const Profile(),
         Login.routeName: (context) => const Login(),
         Register.routeName: (context) => const Register(),
         AddItem.routeName: (context) => const AddItem(),

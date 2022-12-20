@@ -9,15 +9,15 @@ class Daservices {
       },
     );
     var get = json.decode(data.body);
-    List<ItemData> terima = [];
+    List<ItemData> got = [];
 
-    terima = (get["data"] as List).map((e) => ItemData.fromJson(e)).toList();
+    got = (get["data"] as List).map((e) => ItemData.fromJson(e)).toList();
 
-    return terima;
+    return got;
   }
 
-  static Future<http.Response> setData(
-      dynamic item_name, dynamic item_id, dynamic item_description) async {
+  static void setData(dynamic item_name, int id_user, dynamic item_id,
+      dynamic item_description) async {
     var response = await http.post(
       Uri.https(Const.baseUrl, "/api/Items"),
       headers: <String, String>{
@@ -29,15 +29,13 @@ class Daservices {
         'item_description': item_description,
       }),
     );
-    dynamic resp;
-    if (response.statusCode == 200) {
-      resp = "Success";
-    }
+    var get = json.decode(response.body);
+    List<User> accept = [];
 
-    return resp;
+    accept = (get["data"] as List).map((e) => User.fromJson(e)).toList();
   }
 
-  static Future<List<User>> Login(dynamic email, dynamic password) async {
+  static Future<User> Login(dynamic email, dynamic password) async {
     var response = await http.post(
       Uri.https(Const.baseUrl, "/api/users/login"),
       headers: <String, String>{
@@ -46,10 +44,27 @@ class Daservices {
       body: jsonEncode(<String, dynamic>{'email': email, 'password': password}),
     );
     dynamic resp = jsonDecode(response.body);
-    List<User> terima = [];
+    List<User> got = [];
     if (response.statusCode == 200) {
-      terima = (resp["data"] as List).map((e) => User.fromJson(e)).toList();
+      got = (resp["data"] as List).map((e) => User.fromJson(e)).toList();
     }
-    return terima;
+    User loggedUser =
+        got.where((element) => element.userEmail == email).toList()[0];
+    return loggedUser;
+  }
+
+  static Future<List<User>> getUser() async {
+    dynamic data = await http.get(
+      Uri.https(Const.baseUrl, "/api/users"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    var get = json.decode(data.body);
+    List<User> got = [];
+
+    got = (get["data"] as List).map((e) => User.fromJson(e)).toList();
+
+    return got;
   }
 }

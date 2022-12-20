@@ -24,16 +24,11 @@ class _AddItemState extends State<AddItem> {
   }
 
   Future<dynamic> InputData() async {
-    dynamic response;
-    await Daservices.setData(ctrlName.text.toString(), ctrlQty.text.toString(),
-            ctrlDesc.text.toString())
-        .then((value) {
-      setState(() {
-        response = value;
-      });
-      // Navigator.pushReplacement(
-      //     this.context, MaterialPageRoute(builder: (context) => Home()));
-    });
+    dynamic response = true;
+    Daservices.setData(ctrlName.text.toString(), Const.User_id,
+        ctrlQty.text.toString(), ctrlDesc.text.toString());
+    Navigator.pushReplacement(
+        this.context, MaterialPageRoute(builder: (context) => Home(response)));
     return response;
   }
 
@@ -79,7 +74,7 @@ class _AddItemState extends State<AddItem> {
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           labelText: "Item Name",
-                          prefixIcon: Icon(Icons.email)),
+                          prefixIcon: Icon(Icons.add_box)),
                       controller: ctrlName,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
@@ -92,7 +87,8 @@ class _AddItemState extends State<AddItem> {
                     TextFormField(
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
-                          labelText: "Quantity", prefixIcon: Icon(Icons.lock)),
+                          labelText: "Quantity",
+                          prefixIcon: Icon(Icons.stacked_bar_chart)),
                       controller: ctrlQty,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
@@ -106,7 +102,7 @@ class _AddItemState extends State<AddItem> {
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           labelText: "Description",
-                          prefixIcon: Icon(Icons.lock)),
+                          prefixIcon: Icon(Icons.question_answer)),
                       controller: ctrlDesc,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
@@ -134,7 +130,7 @@ class _AddItemState extends State<AddItem> {
                                 );
                               }))));
                         } else {
-                          // PostLogin();
+                          InputData();
                         }
                       },
                       child: const Text(

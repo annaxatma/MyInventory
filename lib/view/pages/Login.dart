@@ -21,8 +21,8 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  List<User> user = [];
-  Future<List<User>> PostLogin() async {
+  late User user;
+  Future<User> PostLogin() async {
     await Daservices.Login(ctrlEmail.text.toString(), ctrlPass.text.toString())
         .then((value) {
       setState(() {

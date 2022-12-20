@@ -1,7 +1,8 @@
 part of 'Pages.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  final User user;
+  const Profile(this.user);
 
   static const String routeName = "/Profile";
 
@@ -12,6 +13,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    User u = widget.user;
     return Scaffold(
       body: Container(
         //color: Colors.blue,
@@ -43,7 +45,7 @@ class _ProfileState extends State<Profile> {
                         color: Color.fromARGB(255, 145, 145, 145)),
                   ),
                   Text(
-                    "Anna",
+                    u.userName.toString(),
                     style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.w900,

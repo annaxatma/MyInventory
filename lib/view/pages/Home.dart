@@ -1,7 +1,7 @@
 part of 'Pages.dart';
 
 class Home extends StatefulWidget {
-  final List<User> user;
+  final User user;
   const Home(this.user);
 
   static const String routeName = "/Home";
@@ -11,6 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<User> u = [];
   List<dynamic> list = [];
   Future<dynamic> getItemData() async {
     await Daservices.getData().then((value) {
@@ -24,12 +25,14 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     getItemData();
+    User u = widget.user;
+    Const.User_id = int.parse(u.userId.toString());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    List<User> u = widget.user;
+    User u = widget.user;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 40, 107, 53),
       body: Stack(
@@ -55,7 +58,7 @@ class _HomeState extends State<Home> {
                               "Hello,",
                               style: TextStyle(color: Colors.white),
                             ),
-                            Text(u.first.userName.toString(),
+                            Text(u.userName.toString(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -70,7 +73,10 @@ class _HomeState extends State<Home> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(context, Profile.routeName);
+                                Navigator.push(
+                                    this.context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Profile(u)));
                               },
                               child: Icon(
                                 Icons.person,
