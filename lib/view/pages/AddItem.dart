@@ -1,7 +1,8 @@
 part of "Pages.dart";
 
 class AddItem extends StatefulWidget {
-  const AddItem({Key? key}) : super(key: key);
+  final User user;
+  const AddItem(this.user);
 
   static const String routeName = "/AddItem";
 
@@ -24,11 +25,12 @@ class _AddItemState extends State<AddItem> {
   }
 
   Future<dynamic> InputData() async {
+    User u = widget.user;
     dynamic response = true;
-    Daservices.setData(ctrlName.text.toString(), Const.User_id,
+    Daservices.setData(ctrlName.text.toString(), u.userId,
         ctrlQty.text.toString(), ctrlDesc.text.toString());
     Navigator.pushReplacement(
-        this.context, MaterialPageRoute(builder: (context) => Home(response)));
+        this.context, MaterialPageRoute(builder: (context) => Home(u)));
     return response;
   }
 

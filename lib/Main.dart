@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Login.routeName: (context) => const Login(),
         Register.routeName: (context) => const Register(),
-        AddItem.routeName: (context) => const AddItem(),
+        // AddItem.routeName: (context) => const AddItem(user);
         ItemDetails.routeName: (context) => const ItemDetails(),
         EditItem.routeName: (context) => const EditItem(),
       },

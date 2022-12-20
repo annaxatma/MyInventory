@@ -162,7 +162,10 @@ class _HomeState extends State<Home> {
         ),
         backgroundColor: const Color.fromARGB(255, 40, 107, 53),
         onPressed: () {
-          Navigator.pushNamed(context, AddItem.routeName);
+          User u = widget.user;
+          // Navigator.pushNamed(context, AddItem.routeName);
+          Navigator.push(this.context,
+              MaterialPageRoute(builder: (context) => AddItem(u)));
         },
       ),
     );
