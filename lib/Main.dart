@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Removing the "debug" text.
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
-      initialRoute: Login.routeName,
+      initialRoute: SplashScreen.routeName,
 
       // Page routes
       routes: {
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         // AddItem.routeName: (context) => const AddItem(user);
         ItemDetails.routeName: (context) => const ItemDetails(),
         EditItem.routeName: (context) => const EditItem(),
+        SplashScreen.routeName: (context) => const SplashScreen(),
       },
     );
   }
