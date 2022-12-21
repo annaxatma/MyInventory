@@ -1,7 +1,10 @@
 part of "Pages.dart";
 
 class EditItem extends StatefulWidget {
-  const EditItem({Key? key}) : super(key: key);
+  final ItemData item;
+  final User user;
+  const EditItem(this.item, this.user);
+  // const EditItem({Key? key}) : super(key: key);
 
   static const String routeName = "/EditItem";
 
@@ -10,8 +13,35 @@ class EditItem extends StatefulWidget {
 }
 
 class _EditItemState extends State<EditItem> {
+  final _loginKey = GlobalKey<FormState>();
+  final ctrlName = TextEditingController();
+  final ctrlQty = TextEditingController();
+  final ctrlDesc = TextEditingController();
+
+  @override
+  void dispose() {
+    ctrlName.dispose();
+    ctrlQty.dispose();
+    ctrlDesc.dispose();
+    super.dispose();
+  }
+
+  Future<dynamic> UpdateData() async {
+    ItemData i = widget.item;
+    User u = widget.user;
+
+    dynamic response = true;
+    Daservices.updateData(ctrlName.text.toString(), ctrlQty.toString(),
+        i.itemId, ctrlQty.toString());
+    Navigator.pushReplacement(
+        this.context, MaterialPageRoute(builder: (context) => Home(u)));
+    return response;
+  }
+
   @override
   Widget build(BuildContext context) {
+    ItemData i = widget.item;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -59,12 +89,19 @@ class _EditItemState extends State<EditItem> {
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: "Item Name",
-                    hintText: "Nails",
+                    hintText: i.itemName,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.input),
                   ),
+                  controller: ctrlName,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    return value.toString().isEmpty
+                        ? 'Please fill in the blank!'
+                        : null;
+                  },
                 ),
                 const SizedBox(
                   height: 16,
@@ -75,12 +112,19 @@ class _EditItemState extends State<EditItem> {
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: "Quantity",
-                    hintText: "342567",
+                    hintText: i.itemQuantity,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.production_quantity_limits),
                   ),
+                  controller: ctrlQty,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    return value.toString().isEmpty
+                        ? 'Please fill in the blank!'
+                        : null;
+                  },
                 ),
                 const SizedBox(
                   height: 16,
@@ -91,13 +135,19 @@ class _EditItemState extends State<EditItem> {
                   style: const TextStyle(
                       color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
                   keyboardType: TextInputType.visiblePassword,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: "Item Description",
-                    hintText:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    hintText: i.itemDescription,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.question_mark),
                   ),
+                  controller: ctrlDesc,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    return value.toString().isEmpty
+                        ? 'Please fill in the blank!'
+                        : null;
+                  },
                 ),
 
                 const SizedBox(
@@ -109,7 +159,24 @@ class _EditItemState extends State<EditItem> {
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      if (ctrlName.text.toString() == "" ||
+                          ctrlQty.text.toString() == "" ||
+                          ctrlDesc.text.toString() == "") {
+                        showDialog(
+                            context: context,
+                            builder: ((((context) {
+                              return AlertDialog(
+                                title: Text("There is an Error!"),
+                                content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text("Please fill in the blanks!"),
+                                    ]),
+                              );
+                            }))));
+                      } else {
+                        UpdateData();
+                      }
                     },
                     child: Text(
                       'SAVE',

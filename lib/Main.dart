@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         Register.routeName: (context) => const Register(),
         // AddItem.routeName: (context) => const AddItem(user);
         ItemDetails.routeName: (context) => const ItemDetails(),
-        EditItem.routeName: (context) => const EditItem(),
+        // EditItem.routeName: (context) => const EditItem(),
       },
     );
   }

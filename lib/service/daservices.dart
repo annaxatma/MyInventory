@@ -16,7 +16,7 @@ class Daservices {
     return got;
   }
 
-  static void setData(dynamic item_name, dynamic id_user, dynamic item_id,
+  static void setData(dynamic item_name, dynamic id_user, dynamic item_quantity,
       dynamic item_description) async {
     var response = await http.post(
       Uri.https(Const.baseUrl, "/api/Items"),
@@ -25,15 +25,29 @@ class Daservices {
       },
       body: jsonEncode(<String, dynamic>{
         'name': item_name,
-        'quantity': item_id,
+        'quantity': item_quantity,
         'description': item_description,
         'id_user': id_user
       }),
     );
     var get = json.decode(response.body);
-    // List<User> accept = [];
+  }
 
-    // accept = (get["data"] as List).map((e) => User.fromJson(e)).toList();
+  static void updateData(dynamic item_name, dynamic item_quantity,
+      dynamic item_id, dynamic item_description) async {
+    var response = await http.put(
+      Uri.https(Const.baseUrl, "/api/Items"),
+      headers: <String, String>{
+        'Content-Type': "application/x-www-form-urlencoded",
+      },
+      body: jsonEncode(<String, dynamic>{
+        'item_id': item_id,
+        'name': item_name,
+        'quantity': item_quantity,
+        'description': item_description
+      }),
+    );
+    var get = json.decode(response.body);
   }
 
   static Future<User> Login(dynamic email, dynamic password) async {
