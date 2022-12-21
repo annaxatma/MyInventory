@@ -91,7 +91,7 @@ class _EditItemState extends State<EditItem> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: "Item Name",
-                    hintText: i.itemName,
+                    hintText: i.itemName.toString(),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.input),
                   ),
@@ -114,7 +114,7 @@ class _EditItemState extends State<EditItem> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: "Quantity",
-                    hintText: i.itemQuantity,
+                    hintText: i.itemQuantity.toString(),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.production_quantity_limits),
                   ),
@@ -137,7 +137,7 @@ class _EditItemState extends State<EditItem> {
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                     labelText: "Item Description",
-                    hintText: i.itemDescription,
+                    hintText: i.itemDescription.toString(),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     prefixIcon: Icon(Icons.question_mark),
                   ),

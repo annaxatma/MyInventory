@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                           return LazyLoadingList(
                               initialSizeOfItems: 10,
                               loadMore: () {},
-                              child: ItemCard(list[index]),
+                              child: ItemCard(list[index], u),
                               index: index,
                               hasMore: true);
                         }),

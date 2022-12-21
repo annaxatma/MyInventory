@@ -2,7 +2,8 @@ part of "Widgets.dart";
 
 class ItemCard extends StatefulWidget {
   final ItemData item;
-  const ItemCard(this.item);
+  final User user;
+  const ItemCard(this.item, this.user);
 
   @override
   _ItemCardState createState() => _ItemCardState();
@@ -12,6 +13,7 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     ItemData a = widget.item;
+    User u = widget.user;
     print(widget.item);
     return Card(
         color: const Color(0xFFFFFFFF),
@@ -20,7 +22,10 @@ class _ItemCardState extends State<ItemCard> {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         elevation: 2,
         child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(this.context,
+                  MaterialPageRoute(builder: (context) => ItemDetails(a, u)));
+            },
             splashColor: const Color(0xFF43A7FF),
             child: Container(
                 child: Row(

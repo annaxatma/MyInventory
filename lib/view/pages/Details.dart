@@ -1,7 +1,10 @@
 part of "Pages.dart";
 
 class ItemDetails extends StatefulWidget {
-  const ItemDetails({Key? key}) : super(key: key);
+  final ItemData item;
+  final User user;
+  const ItemDetails(this.item, this.user);
+  // const ItemDetails({Key? key}) : super(key: key);
 
   static const String routeName = "/Details";
 
@@ -12,6 +15,8 @@ class ItemDetails extends StatefulWidget {
 class _ItemDetailsState extends State<ItemDetails> {
   @override
   Widget build(BuildContext context) {
+    ItemData a = widget.item;
+    User u = widget.user;
     return Scaffold(
       body: Stack(
         children: [
@@ -45,8 +50,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                       children: [
                         // This is the name of the item.
                         Container(
-                          child: const Text(
-                            "Nails",
+                          child: Text(
+                            a.itemName.toString(),
                             style: TextStyle(
                                 color: Color.fromARGB(255, 40, 107, 53),
                                 fontWeight: FontWeight.w900,
@@ -57,8 +62,8 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                         // This is the item ID.
                         Container(
-                          child: const Text(
-                            "Item ID: 0001",
+                          child: Text(
+                            "Item ID:" + a.itemId.toString(),
                             style: TextStyle(
                                 color: Color.fromARGB(255, 145, 145, 145)),
                           ),
@@ -87,8 +92,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                 const SizedBox(
                   height: 32,
                 ),
-                const Text(
-                  "Quantity: 324567",
+                Text(
+                  "Quantity: " + a.itemQuantity.toString(),
                   style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
                 ),
                 const SizedBox(
@@ -98,8 +103,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                   "Description:",
                   style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
                 ),
-                const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                Text(
+                  a.itemDescription.toString(),
                   style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
                 )
               ],
@@ -116,7 +121,8 @@ class _ItemDetailsState extends State<ItemDetails> {
         ),
         backgroundColor: const Color.fromARGB(255, 40, 107, 53),
         onPressed: () {
-          Navigator.pushNamed(context, EditItem.routeName);
+          Navigator.push(this.context,
+              MaterialPageRoute(builder: (context) => EditItem(a, u)));
         },
       ),
     );
