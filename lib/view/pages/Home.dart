@@ -14,7 +14,8 @@ class _HomeState extends State<Home> {
   List<User> u = [];
   List<dynamic> list = [];
   Future<dynamic> getItemData() async {
-    await Daservices.getData().then((value) {
+    User u = widget.user;
+    await Daservices.getData(u.userId).then((value) {
       setState(() {
         list = value;
       });

@@ -1,9 +1,9 @@
 part of 'services.dart';
 
 class Daservices {
-  static Future<List<ItemData>> getData() async {
+  static Future<List<ItemData>> getData(dynamic id_user) async {
     dynamic data = await http.get(
-      Uri.https(Const.baseUrl, "/api/Items"),
+      Uri.https(Const.baseUrl, "/api/Items/" + id_user),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
