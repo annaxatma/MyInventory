@@ -13,6 +13,18 @@ class ItemDetails extends StatefulWidget {
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
+  //Function Delete Item
+  Future<dynamic> DeleteItem() async {
+    ItemData i = widget.item;
+    User u = widget.user;
+
+    dynamic response = true;
+    Daservices.deleteData(i.itemId);
+    Navigator.pushReplacement(
+        this.context, MaterialPageRoute(builder: (context) => Home(u)));
+    return response;
+  }
+
   @override
   Widget build(BuildContext context) {
     ItemData a = widget.item;
@@ -74,7 +86,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                     // Delete item button
                     ElevatedButton(
                       onPressed: () {
-                        // To be done
+                        DeleteItem();
                       },
                       child: const Text(
                         'DELETE ITEM',

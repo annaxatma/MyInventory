@@ -51,6 +51,20 @@ class Daservices {
     var get = json.decode(response.body);
   }
 
+  static void deleteData(dynamic item_id) async {
+    var response = await http.delete(
+      Uri.https(Const.baseUrl, "/api/Items"),
+      headers: {
+        'Content-Type': "application/x-www-form-urlencoded",
+      },
+      encoding: Encoding.getByName('utf-8'),
+      body: {
+        'item_id': item_id,
+      },
+    );
+    var get = json.decode(response.body);
+  }
+
   static Future<User> Login(dynamic email, dynamic password) async {
     var response = await http.post(
       Uri.https(Const.baseUrl, "/api/users/login"),
