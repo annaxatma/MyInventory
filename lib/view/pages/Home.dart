@@ -3,9 +3,7 @@ part of 'Pages.dart';
 class Home extends StatefulWidget {
   final User user;
   const Home(this.user);
-
   static const String routeName = "/Home";
-
   @override
   State<Home> createState() => _HomeState();
 }
@@ -38,13 +36,14 @@ class _HomeState extends State<Home> {
       backgroundColor: const Color.fromARGB(255, 40, 107, 53),
       body: Stack(
         children: [
+          // This is the profile section.
           Container(
-              margin: EdgeInsets.fromLTRB(0, 70, 0, 0),
+              margin: EdgeInsets.fromLTRB(32, 70, 32, 0),
               color: const Color.fromARGB(255, 40, 107, 53),
               width: double.infinity,
               height: 50,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
@@ -63,7 +62,7 @@ class _HomeState extends State<Home> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 14))
+                                    fontSize: 24))
                           ],
                         ),
                       )),
@@ -88,6 +87,7 @@ class _HomeState extends State<Home> {
                           ]))
                 ],
               )),
+          // This is the white rounded square.
           Container(
             padding: EdgeInsets.only(bottom: 20),
             margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
@@ -101,16 +101,21 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.fromLTRB(32, 44, 32, 0),
               child: Column(
                 children: [
+                  // This is the item list text.
                   Container(
                     alignment: Alignment.centerLeft,
-                    child: Text(
+                    child: const Text(
                       "Item List",
                       style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 32,
                           fontWeight: FontWeight.w900,
                           color: Color.fromARGB(255, 40, 107, 53)),
                     ),
                   ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  // This is the line under the item list.
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -119,6 +124,7 @@ class _HomeState extends State<Home> {
                       color: const Color.fromARGB(255, 40, 107, 53),
                     ),
                   ),
+                  // This is the item cards.
                   Flexible(
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
@@ -132,19 +138,11 @@ class _HomeState extends State<Home> {
                               hasMore: true);
                         }),
                   ),
-
-                  // Container(
-                  //   child: Expanded(
-                  //     child: GestureDetector(
-                  //       onTap: () {},
-                  //       child: Icon(Icons.free_breakfast_rounded),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
           ),
+          // This is the white box at the bottom.
           Container(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -154,7 +152,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-
       // This is the add item button.
       floatingActionButton: FloatingActionButton.extended(
         label: const Text(
@@ -164,7 +161,6 @@ class _HomeState extends State<Home> {
         backgroundColor: const Color.fromARGB(255, 40, 107, 53),
         onPressed: () {
           User u = widget.user;
-          // Navigator.pushNamed(context, AddItem.routeName);
           Navigator.push(this.context,
               MaterialPageRoute(builder: (context) => AddItem(u)));
         },
