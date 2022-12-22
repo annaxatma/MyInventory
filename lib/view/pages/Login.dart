@@ -21,7 +21,6 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  // This is the function for login.
   late User user;
   Future<User> PostLogin() async {
     await Daservices.Login(ctrlEmail.text.toString(), ctrlPass.text.toString())
@@ -40,12 +39,10 @@ class _LoginState extends State<Login> {
     return Scaffold(
         body: Stack(children: [
       Container(
-        padding: EdgeInsets.all(32),
+        padding: EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-            // This is the login text.
             Container(
               width: double.infinity,
               child: const Text(
@@ -57,11 +54,6 @@ class _LoginState extends State<Login> {
                 textAlign: TextAlign.left,
               ),
             ),
-            SizedBox(
-              height: 6,
-            ),
-
-            // This is the text under the login text.
             Container(
               width: double.infinity,
               child: const Text(
@@ -75,15 +67,11 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 8,
             ),
-
-            // This is the input form.
             Form(
                 key: _loginKey,
                 child: Column(
                   children: [
                     SizedBox(height: 16),
-
-                    //This is the email input.
                     TextFormField(
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
@@ -97,8 +85,6 @@ class _LoginState extends State<Login> {
                       },
                     ),
                     SizedBox(height: 16),
-
-                    // This is the password input.
                     TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -111,75 +97,41 @@ class _LoginState extends State<Login> {
                             : null;
                       },
                     ),
-                    SizedBox(height: 64),
-
-                    // This is the login button.
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (ctrlPass.text.toString() == "" ||
-                              ctrlEmail.text.toString() == "") {
-                            showDialog(
-                                context: context,
-                                builder: ((((context) {
-                                  return AlertDialog(
-                                    title: Text("There is an Error!", textAlign: TextAlign.center, style: TextStyle(color: Colors.red),),
-                                    content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text("Please fill in the blanks!", textAlign: TextAlign.center, style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),),
-                                        ]),
-                                  );
-                                }))));
-                          } else {
-                            PostLogin();
-                          }
-                        },
-                        child: const Text(
-                          'LOGIN',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 40, 107, 53),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(50),
-                          ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (ctrlPass.text.toString() == "" ||
+                            ctrlEmail.text.toString() == "") {
+                          showDialog(
+                              context: context,
+                              builder: ((((context) {
+                                return AlertDialog(
+                                  title: Text("There is an Error!"),
+                                  content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text("Please fill in the blanks!"),
+                                      ]),
+                                );
+                              }))));
+                        } else {
+                          PostLogin();
+                        }
+                      },
+                      child: const Text(
+                        'LOGIN',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 40, 107, 53),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(50),
                         ),
                       ),
                     )
                   ],
                 )),
           ],
-        ),
-      ),
-
-      // This is the bottom text.
-      Align(
-        alignment: const Alignment(0, 0.9),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, Register.routeName);
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Don't have an account?",
-                style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              const Text(
-                "Sign Up",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 40, 107, 53),
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
         ),
       ),
     ]));

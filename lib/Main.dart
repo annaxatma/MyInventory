@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       // Removing the "debug" text.
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: Login.routeName,
 
       // Page routes
       routes: {
