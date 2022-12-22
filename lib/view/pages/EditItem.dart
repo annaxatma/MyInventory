@@ -4,7 +4,6 @@ class EditItem extends StatefulWidget {
   final ItemData item;
   final User user;
   const EditItem(this.item, this.user);
-  // const EditItem({Key? key}) : super(key: key);
 
   static const String routeName = "/EditItem";
 
@@ -46,7 +45,7 @@ class _EditItemState extends State<EditItem> {
       body: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+            padding: EdgeInsets.all(16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -56,7 +55,7 @@ class _EditItemState extends State<EditItem> {
                   // This is the custom back button.
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
                     },
                     child: const Icon(
                       Icons.arrow_back,
@@ -80,78 +79,80 @@ class _EditItemState extends State<EditItem> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                const SizedBox(
-                  height: 32,
-                ),
-
                 // This is the item name input.
-                TextFormField(
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: "Item Name",
-                    hintText: i.itemName.toString(),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    prefixIcon: Icon(Icons.input),
-                  ),
-                  controller: ctrlName,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    return value.toString().isEmpty
-                        ? 'Please fill in the blank!'
-                        : null;
-                  },
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
+                Form(
+                  key: _loginKey,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 16),
+                      TextFormField(
+                        // style: const TextStyle(
+                        //     color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                            labelText: "Item Name",
+                            hintText: i.itemName.toString(),
+                            // floatingLabelBehavior: FloatingLabelBehavior.always,
+                            prefixIcon: Icon(Icons.input)),
+                        controller: ctrlName,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) {
+                          return value.toString().isEmpty
+                              ? 'Please fill in the blank!'
+                              : null;
+                        },
+                      ),
+                      SizedBox(height: 16),
+                      // This is the quantity input.
+                      TextFormField(
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 145, 145, 145),
+                            fontSize: 14),
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          labelText: "Quantity",
+                          hintText: i.itemQuantity.toString(),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          prefixIcon: Icon(Icons.production_quantity_limits),
+                        ),
+                        controller: ctrlQty,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) {
+                          return value.toString().isEmpty
+                              ? 'Please fill in the blank!'
+                              : null;
+                        },
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
 
-                // This is the quantity input.
-                TextFormField(
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: "Quantity",
-                    hintText: i.itemQuantity.toString(),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    prefixIcon: Icon(Icons.production_quantity_limits),
-                  ),
-                  controller: ctrlQty,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    return value.toString().isEmpty
-                        ? 'Please fill in the blank!'
-                        : null;
-                  },
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
+                      // This is the item description input.
+                      TextFormField(
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 145, 145, 145),
+                            fontSize: 14),
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration: InputDecoration(
+                          labelText: "Item Description",
+                          hintText: i.itemDescription.toString(),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          prefixIcon: Icon(Icons.question_mark),
+                        ),
+                        controller: ctrlDesc,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) {
+                          return value.toString().isEmpty
+                              ? 'Please fill in the blank!'
+                              : null;
+                        },
+                      ),
 
-                // This is the item description input.
-                TextFormField(
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 145, 145, 145), fontSize: 14),
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    labelText: "Item Description",
-                    hintText: i.itemDescription.toString(),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    prefixIcon: Icon(Icons.question_mark),
+                      const SizedBox(
+                        height: 32,
+                      ),
+                    ],
                   ),
-                  controller: ctrlDesc,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    return value.toString().isEmpty
-                        ? 'Please fill in the blank!'
-                        : null;
-                  },
-                ),
-
-                const SizedBox(
-                  height: 32,
                 ),
 
                 // This is the save button.
