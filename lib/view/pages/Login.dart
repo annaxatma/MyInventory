@@ -44,7 +44,6 @@ class _LoginState extends State<Login> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             // This is the login text.
             Container(
               width: double.infinity,
@@ -124,11 +123,21 @@ class _LoginState extends State<Login> {
                                 context: context,
                                 builder: ((((context) {
                                   return AlertDialog(
-                                    title: Text("There is an Error!", textAlign: TextAlign.center, style: TextStyle(color: Colors.red),),
+                                    title: Text(
+                                      "There is an Error!",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.red),
+                                    ),
                                     content: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Text("Please fill in the blanks!", textAlign: TextAlign.center, style: TextStyle(color: Color.fromARGB(255, 145, 145, 145)),),
+                                          Text(
+                                            "Please fill in the blanks!",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 145, 145, 145)),
+                                          ),
                                         ]),
                                   );
                                 }))));
