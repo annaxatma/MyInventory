@@ -35,17 +35,17 @@ class Daservices {
 
   static void updateData(dynamic item_name, dynamic item_quantity,
       dynamic item_id, dynamic item_description) async {
-    var response = await http.put(
-      Uri.https(Const.baseUrl, "/api/Items"),
-      headers: <String, String>{
+    final response = await http.put(
+      Uri.https(Const.baseUrl, '/api/Items'),
+      headers: {
         'Content-Type': "application/x-www-form-urlencoded",
       },
-      body: jsonEncode(<String, dynamic>{
+      body: {
         'item_id': item_id,
         'name': item_name,
         'quantity': item_quantity,
         'description': item_description
-      }),
+      },
     );
     var get = json.decode(response.body);
   }

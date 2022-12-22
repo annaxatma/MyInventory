@@ -31,8 +31,8 @@ class _EditItemState extends State<EditItem> {
     User u = widget.user;
 
     dynamic response = true;
-    Daservices.updateData(ctrlName.text.toString(), ctrlQty.toString(),
-        i.itemId, ctrlQty.toString());
+    Daservices.updateData(ctrlName.text.toString(), ctrlQty.text.toString(),
+        i.itemId, ctrlDesc.text.toString());
     Navigator.pushReplacement(
         this.context, MaterialPageRoute(builder: (context) => Home(u)));
     return response;
