@@ -94,7 +94,7 @@ class _EditItemState extends State<EditItem> {
                             hintText: i.itemName.toString(),
                             // floatingLabelBehavior: FloatingLabelBehavior.always,
                             prefixIcon: Icon(Icons.input)),
-                        controller: ctrlName,
+                        controller: ctrlName..text = i.itemName.toString(),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           return value.toString().isEmpty
@@ -105,9 +105,7 @@ class _EditItemState extends State<EditItem> {
                       SizedBox(height: 16),
                       // This is the quantity input.
                       TextFormField(
-                        style: const TextStyle(
-                            color: Color.fromARGB(255, 145, 145, 145),
-                            fontSize: 14),
+                        style: const TextStyle(fontSize: 14),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: "Quantity",
@@ -115,7 +113,7 @@ class _EditItemState extends State<EditItem> {
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           prefixIcon: Icon(Icons.production_quantity_limits),
                         ),
-                        controller: ctrlQty,
+                        controller: ctrlQty..text = i.itemQuantity.toString(),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           return value.toString().isEmpty
@@ -129,9 +127,7 @@ class _EditItemState extends State<EditItem> {
 
                       // This is the item description input.
                       TextFormField(
-                        style: const TextStyle(
-                            color: Color.fromARGB(255, 145, 145, 145),
-                            fontSize: 14),
+                        style: const TextStyle(fontSize: 14),
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           labelText: "Item Description",
@@ -139,7 +135,8 @@ class _EditItemState extends State<EditItem> {
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           prefixIcon: Icon(Icons.question_mark),
                         ),
-                        controller: ctrlDesc,
+                        controller: ctrlDesc
+                          ..text = i.itemDescription.toString(),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           return value.toString().isEmpty
