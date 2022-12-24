@@ -132,7 +132,24 @@ class _AddItemState extends State<AddItem> {
                                 );
                               }))));
                         } else {
-                          InputData();
+                          if (InputData() != null) {
+                            Fluttertoast.showToast(
+                                msg: "You Have Successfully Add an Item",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 14);
+                          } else {
+                            Fluttertoast.showToast(
+                                msg: "Failed to Add Item, try Again",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 14);
+                          }
+                          ;
                         }
                       },
                       child: const Text(

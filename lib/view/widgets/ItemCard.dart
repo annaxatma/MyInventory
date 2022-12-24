@@ -38,7 +38,7 @@ class _ItemCardState extends State<ItemCard> {
                         Flexible(
                           // This is the name of the item.
                           child: Container(
-                            width: 100,
+                            width: 80,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
