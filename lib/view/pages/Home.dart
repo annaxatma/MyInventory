@@ -124,10 +124,14 @@ class _HomeState extends State<Home> {
                       color: const Color.fromARGB(255, 40, 107, 53),
                     ),
                   ),
+                  SizedBox(
+                    height: 16,
+                  ),
                   // This is the item cards.
                   Flexible(
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
+                        padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                         itemCount: list.length,
                         itemBuilder: (context, index) {
                           return LazyLoadingList(
